@@ -1,3 +1,7 @@
+output "network_managers_id" {
+  description = "Map of id values across all network_managers, keyed the same as var.network_managers"
+  value       = { for k, v in azurerm_network_manager.network_managers : k => v.id }
+}
 output "network_managers_cross_tenant_scopes" {
   description = "Map of cross_tenant_scopes values across all network_managers, keyed the same as var.network_managers"
   value       = { for k, v in azurerm_network_manager.network_managers : k => v.cross_tenant_scopes }
