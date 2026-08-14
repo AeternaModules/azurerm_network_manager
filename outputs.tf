@@ -24,7 +24,7 @@ output "network_managers_resource_group_name" {
 }
 output "network_managers_scope" {
   description = "Map of scope values across all network_managers, keyed the same as var.network_managers"
-  value       = { for k, v in azurerm_network_manager.network_managers : k => v.scope if v.scope != null && length(v.scope) > 0 }
+  value       = { for k, v in azurerm_network_manager.network_managers : k => one(v.scope) if v.scope != null && length(v.scope) > 0 }
 }
 output "network_managers_scope_accesses" {
   description = "Map of scope_accesses values across all network_managers, keyed the same as var.network_managers"
